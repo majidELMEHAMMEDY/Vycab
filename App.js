@@ -13,82 +13,29 @@ import {
   createDrawerNavigator,
 } from "@react-navigation/drawer";
 import User from "./assets/user.jpg";
-// import Backups from "./screens/Backups";
-// import Categories from "./screens/Categories";
 import Contact from "./screens/Contact";
-// import Customize from "./screens/Customize";
-// import GetPremium from "./screens/GetPremium";
 import Home from "./screens/Home";
-// import RateApp from "./screens/RateApp";
-// import Settings from "./screens/Settings";
-// import Timer from "./screens/Timer";
+import DrawerContent from "./components/Drawer/DrawerContent";
+
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+   
+      <NavigationContainer>
       <Drawer.Navigator
-        drawerContent={(props) => {
-          return (
-            <View>
-              <View
-                style={{
-                  height: 200,
-                  width: "100%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderBottomColor: "#f4f4f4",
-                  borderBottomWidth: 1,
-                }}
-              >
-                <Image
-                  source={User}
-                  style={{
-                    height: 130,
-                    width: 130,
-                    borderRadius: 65,
-                  }}
-                />
-                <Text
-                  style={{
-                    fontSize: 22,
-                    marginVertical: 6,
-                    fontWeight: "bold",
-                    color: "#111",
-                  }}
-                >
-                  Isabella Joanna
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: "#111",
-                  }}
-                >
-                  Product Manager
-                </Text>
-              </View>
-              <DrawerItemList {...props} />
-            </View>
-          );
-        }}
+         drawerContent={(props) => <DrawerContent {...props} />}
+        
         screenOptions={{
           drawerStyle: {
             backgroundColor: "#fff",
             width: 250,
           },
-          headerStyle: {
-            backgroundColor: "#f4511e",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          drawerLabelStyle: {
-            color: "#111",
-          },
+         
+          
         }}
+        screenOptions={{headerShown:false}}
       >
         <Drawer.Screen
           name="Home"
@@ -118,5 +65,6 @@ export default function App() {
         />
       </Drawer.Navigator>
     </NavigationContainer>
+   
   );
 }
