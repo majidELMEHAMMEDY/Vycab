@@ -16,15 +16,18 @@ import {
 import DrawerScreen from "./screens/Navigation/DrawerNavigation";
 import { MainNavigation } from "./screens/Navigation/HomeStackNav";
 
+import AppNav from "./screens/Navigation/Auth/AppNav";
+import { AuthProvider } from "./components/Context/AuthContex";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
    
-      <NavigationContainer>
-          <MainNavigation/>
-    </NavigationContainer>
+      
+    <AuthProvider>
+    <AppNav/>
+  </AuthProvider>
    
   );
 }

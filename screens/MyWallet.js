@@ -1,9 +1,10 @@
 import { View, Text,StyleSheet,TouchableOpacity,Dimensions } from "react-native";
 import React from "react";
-
 import {Ionicons, MaterialIcons} from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 
+import TotalCard from "../components/Wallet/totalCard";
+import WithrawHestory from "../components/Wallet/WithrawHestory";
 
 export default function MyWallet({navigation}) {
   return (
@@ -16,31 +17,12 @@ export default function MyWallet({navigation}) {
                  <Text style={styles.titleText}>Wallet</Text>
             </View>
         </View>
-        <View style={{display:'flex',alignItems:'center',position:'absolute',top:150,left:15}}>
-            <View style={styles.card}>
-                  <Text style={[styles.titleText,{color:'#333',fontSize:20}]}>Last 1 Month</Text>
-                  <Text style={[styles.titleText,{color:'#0087b0',fontSize:30}]}>$12,491.22</Text>
-                  <View style={{borderTopColor:'gray',borderTopWidth:0.5,display:'flex',flexDirection:'row',width:'100%',marginTop:30,justifyContent:'space-between',paddingHorizontal:20}}>
-                     <View style={styles.buttomItem}>
-                        <MaterialIcons name="repeat" size={24} color='#333' />
-                        <Text style={{fontWeight:'bold',marginLeft:5}}>244 Rides</Text>
-                     </View>
-                     <View style={styles.buttomItem}>
-                        <Ionicons name="md-stopwatch-outline" size={24} color='#333' />
-                        <Text style={{fontWeight:'bold',marginLeft:5}}>25D 12H</Text>
-                     </View>
-                  </View>
-            </View>
+        <View style={{display:'flex',alignItems:'center',position:'absolute',top:150,left:5}}>
+           
+            <TotalCard/>
+            <WithrawHestory/>
 
-            <View style={[styles.card]}>
-                  <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',flex:1}}>
-                     <Text style={[styles.titleText,{color:'#333',fontSize:20}]}>Last 1 Month</Text>
-                     <View>
-                      <Text>.</Text>
-                     </View>
-                  </View>
-                  
-            </View>
+           
 
             {/* <View style={styles.card}>
                   <Text style={[styles.titleText,{color:'#333',fontSize:20}]}>Last 1 Month</Text>
@@ -64,8 +46,7 @@ export default function MyWallet({navigation}) {
 
 const styles = StyleSheet.create({
     container: { 
-      flex: 1, 
-      
+      display:'flex',
     },
     titleContainer : {
       backgroundColor : '#0087b0',

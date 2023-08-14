@@ -1,5 +1,5 @@
 import { View, Text,Image,TouchableOpacity,ScrollView , StyleSheet,Dimensions} from "react-native";
-import React from "react";
+import React, { useState, useCallback, useContext }  from "react";
 import {
     DrawerItemList,
   } from "@react-navigation/drawer";
@@ -14,11 +14,14 @@ import {
     Entypo
   } from "@expo/vector-icons";
 
+
+
 import User from "../../assets/user.jpg";
 import MenuElement from "../../components/Drawer/MenuElement";
+import { AuthContext } from "../../components/Context/AuthContex";
 const Icon = Entypo;
-export default function DrawerContent({navigation}) {
-    
+const  DrawerContent = ({navigation}) => {
+const {logout} = useContext(AuthContext)
     return (
         <ScrollView >
         <View style={styles.drawerContainer}>
@@ -38,10 +41,10 @@ export default function DrawerContent({navigation}) {
                 <MenuElement   title="Vehicle" icon="car-side" onPress={() => navigation.navigate('MyWallet') } type={FontAwesome5}/>
                 <MenuElement   title="Home" icon="home" onPress={() => navigation.navigate('Home')} type={Fontisto}/>
                 <MenuElement   title="My Wallet" icon="wallet" onPress={() => navigation.navigate('MyWallet') } type={FontAwesome5}/>
-                <MenuElement   title="History" icon="history" onPress={() => console.log('Marques') } type={FontAwesome5}/>
+                <MenuElement   title="History" icon="history" onPress={() => navigation.navigate('History')} type={FontAwesome5}/>
                 <MenuElement   title="Invite a friend" icon="gift" onPress={() => console.log('Marques') } type={Ionicons}/>
                 <MenuElement   title="Settings" icon="ios-settings" onPress={() => console.log('Marques') } type={Ionicons}/>
-                <MenuElement   title="Logout" icon="log-out" onPress={() => console.log('Marques') } type={Entypo}/>
+                <MenuElement   title="Logout" icon="log-out" onPress={() => logout()} type={Entypo}/>
                
               </View>
               
@@ -50,6 +53,8 @@ export default function DrawerContent({navigation}) {
       </ScrollView>
     );
 }
+
+export default DrawerContent;
 
 const styles = StyleSheet.create({
     container: {
